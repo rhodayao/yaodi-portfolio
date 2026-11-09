@@ -1,0 +1,16 @@
+services:
+  portfolio:
+    build: .
+    container_name: yaodi-portfolio
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    env_file:
+      - .env
+    environment:
+      PORT: 8787
+      HOST: 0.0.0.0
+      DATA_DIR: /app/storage/data
+      UPLOAD_DIR: /app/storage/uploads
+    volumes:
+      - ./storage:/app/storage

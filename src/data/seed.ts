@@ -1,0 +1,4 @@
+import type { SiteContent } from '../types'
+import content from '../../backend/data/content.json'
+
+export const seedContent = content as unknown as SiteContent
