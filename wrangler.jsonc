@@ -12,7 +12,8 @@
   "kv_namespaces": [
     {
       "binding": "PORTFOLIO_KV",
-      "id: "bac0df6329214e5f93ca7e10ba7456d4"
+      "id": "bac0df6329214e5f93ca7e10ba7456d4"
+
     }
   ],
   "secrets": {
