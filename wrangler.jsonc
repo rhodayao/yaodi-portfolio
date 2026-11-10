@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "yaodi-portfolio",
+  "name": "rhodayao-portfolio",
   "main": "worker/index.js",
   "compatibility_date": "2026-11-10",
   "assets": {
@@ -11,11 +11,12 @@
   },
   "kv_namespaces": [
     {
-      "binding": "PORTFOLIO_KV"
+      "binding": "PORTFOLIO_KV",
+      "id: "bac0df6329214e5f93ca7e10ba7456d4"
     }
   ],
   "secrets": {
-    "required": ["ADMIN_PASSWORD", "SESSION_SECRET"]
+    "required": ["ADMIN_PASSWORD=admin423", "SESSION_SECRET=yaodi2026sessionkey9f3a7b"]
   },
   "observability": {
     "enabled": true
