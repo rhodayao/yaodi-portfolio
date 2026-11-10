@@ -16,9 +16,6 @@
 
     }
   ],
-  "secrets": {
-    "required": ["ADMIN_PASSWORD=admin423", "SESSION_SECRET=yaodi2026sessionkey9f3a7b"]
-  },
   "observability": {
     "enabled": true
   },
