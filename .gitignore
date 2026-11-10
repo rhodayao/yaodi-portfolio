@@ -30,3 +30,5 @@ storage/
 .wrangler/
 .dev.vars
 .dev.vars.*
+
+*.zip
