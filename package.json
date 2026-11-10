@@ -8,7 +8,9 @@
     "dev": "node scripts/dev.mjs",
     "build": "tsc --noEmit && node scripts/build.mjs",
     "start": "node server/index.js",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "cf:dev": "pnpm build && wrangler dev",
+    "cf:deploy": "pnpm build && wrangler deploy"
   },
   "dependencies": {
     "@fontsource-variable/archivo": "^5.2.8",
@@ -25,7 +27,8 @@
     "@types/react": "^18.3.23",
     "@types/react-dom": "^18.3.7",
     "esbuild": "^0.21.5",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "wrangler": "^4.158.0"
   },
   "engines": {
     "node": ">=22.13.0"

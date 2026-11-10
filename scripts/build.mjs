@@ -8,10 +8,15 @@ const dist = path.join(root, 'dist')
 const assets = path.join(dist, 'assets')
 
 const seedSource = path.join(root, 'backend', 'data', 'content.json')
-const seedTarget = path.join(root, 'server', 'seed-content.json')
+const seedTargets = [
+  path.join(root, 'server', 'seed-content.json'),
+  path.join(root, 'worker', 'seed-content.json'),
+]
 if (fs.existsSync(seedSource)) {
-  fs.mkdirSync(path.dirname(seedTarget), { recursive: true })
-  fs.copyFileSync(seedSource, seedTarget)
+  for (const seedTarget of seedTargets) {
+    fs.mkdirSync(path.dirname(seedTarget), { recursive: true })
+    fs.copyFileSync(seedSource, seedTarget)
+  }
 }
 
 fs.rmSync(dist, { recursive: true, force: true })

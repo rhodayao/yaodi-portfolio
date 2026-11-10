@@ -20,3 +20,12 @@ tailwind.config.*
 postcss.config.*
 
 storage/
+
+.dev.vars
+.dev.vars.*
+.wrangler/
+
+.wrangler-home/
+.wrangler/
+.dev.vars
+.dev.vars.*

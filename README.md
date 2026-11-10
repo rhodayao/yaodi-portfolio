@@ -144,7 +144,8 @@ kill <PID>
 
 ## 3. 部署成公开网址
 
-> 更短、更直接的上线操作清单见 [DEPLOY.md](DEPLOY.md)。
+> **0 成本、保留在线后台：** 见 [CLOUDFLARE.md](CLOUDFLARE.md)。  
+> 付费托管 / 自有服务器方案见 [DEPLOY.md](DEPLOY.md)。
 
 这个项目是 **Node + 文件存储** 的单体应用，最适合 Railway / Render / 一台 VPS。不要直接部署到只支持静态文件的 Vercel / Netlify，因为后台 API 和上传目录需要持久化存储。
 
