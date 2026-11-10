@@ -16,6 +16,8 @@
 
     }
   ],
+"workers_dev": true
+"preview_urls": true
   "observability": {
     "enabled": true
   },
