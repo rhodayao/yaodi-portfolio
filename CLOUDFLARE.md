@@ -7,7 +7,7 @@
 - 不需要服务器
 - 不需要绑定银行卡（Workers / KV 免费计划）
 - 后台仍然可以在线登录、改内容、上传图片
-- 免费地址是 `https://yaodi-portfolio.<你的子域>.workers.dev`
+- 免费地址是 `https://rhodayao-portfolio.<你的子域>.workers.dev`
 - 以后可以绑定自己的域名
 
 > Cloudflare 免费额度对个人作品集足够：Workers 每天 10 万次请求，KV 1GB 存储、每天 1000 次写入。以 Cloudflare 当前定价页为准。
@@ -66,6 +66,18 @@ npm run cf:deploy
 5. 返回一个 `workers.dev` 网址。
 
 第一次部署如果提示选择 `workers.dev` 子域，按提示取一个名字即可。
+
+### 如果使用 Cloudflare 的 GitHub 自动部署
+
+在 Cloudflare Worker 的 Build 设置里使用：
+
+```text
+Root directory: /
+Build command: npm run build
+Deploy command: npx wrangler deploy
+```
+
+不要额外填写 `dist` 作为发布目录：静态资源路径已经写在 `wrangler.jsonc` 的 `assets.directory` 中，指向 `frontend/dist`。
 
 ---
 

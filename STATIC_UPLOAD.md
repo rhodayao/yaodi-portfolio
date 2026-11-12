@@ -8,6 +8,13 @@ portfolio-website/yaodi-portfolio-pages.zip
 
 约 1.7MB，解压后的内容就是网站根目录。
 
+以后内容或样式有更新，重新生成：
+
+```bash
+cd /Users/yaodi/Documents/deepseek-harness/default-workspace/portfolio-website
+npm run package:pages
+```
+
 ## 上传步骤
 
 1. 打开 <https://dash.cloudflare.com/>
