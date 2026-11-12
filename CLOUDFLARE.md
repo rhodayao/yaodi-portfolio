@@ -23,8 +23,8 @@
 ```bash
 cd /Users/yaodi/Documents/deepseek-harness/default-workspace/portfolio-website
 
-pnpm install
-pnpm exec wrangler login
+npm install
+npx wrangler login
 ```
 
 浏览器会打开 Cloudflare 授权页，登录并点击允许。
@@ -32,13 +32,13 @@ pnpm exec wrangler login
 ### 第 2 步：设置两个后台密钥
 
 ```bash
-pnpm exec wrangler secret put ADMIN_PASSWORD
+npx wrangler secret put ADMIN_PASSWORD
 ```
 
 按提示输入你的后台密码，回车。
 
 ```bash
-pnpm exec wrangler secret put SESSION_SECRET
+npx wrangler secret put SESSION_SECRET
 ```
 
 先生成一串随机值：
@@ -54,7 +54,7 @@ openssl rand -hex 32
 ### 第 3 步：部署
 
 ```bash
-pnpm cf:deploy
+npm run cf:deploy
 ```
 
 它会自动完成：
@@ -94,7 +94,7 @@ pnpm cf:deploy
 **改代码 / 改样式：**
 
 ```bash
-pnpm cf:deploy
+npm run cf:deploy
 ```
 
 会重新构建并发布；KV 里的内容、图片、备份不会被覆盖。
@@ -126,7 +126,7 @@ https://portfolio.你的域名.com/admin
 项目已带本地开发密钥文件 `.dev.vars`（不会提交到 Git）：
 
 ```bash
-pnpm cf:dev
+npm run cf:dev
 ```
 
 打开 <http://127.0.0.1:8790>。
@@ -138,27 +138,27 @@ pnpm cf:dev
 ## 常见问题
 
 **Q：`wrangler login` 没有反应？**  
-A：把终端里出现的链接复制到浏览器打开；或先运行 `pnpm exec wrangler whoami` 检查登录状态。
+A：把终端里出现的链接复制到浏览器打开；或先运行 `npx wrangler whoami` 检查登录状态。
 
 **Q：部署时报 `Authentication error`？**  
-A：重新执行 `pnpm exec wrangler login`，确认登录的是正确的 Cloudflare 账号。
+A：重新执行 `npx wrangler login`，确认登录的是正确的 Cloudflare 账号。
 
 **Q：后台登录提示“后台密码或签名密钥未配置”？**  
 A：重新执行：
 
 ```bash
-pnpm exec wrangler secret put ADMIN_PASSWORD
-pnpm exec wrangler secret put SESSION_SECRET
+npx wrangler secret put ADMIN_PASSWORD
+npx wrangler secret put SESSION_SECRET
 ```
 
 **Q：部署后页面 404 / 空白？**  
-A：先运行 `pnpm build`，确认 `dist/` 生成成功，再执行 `pnpm exec wrangler deploy`。
+A：先运行 `npm run build`，确认 `frontend/dist/` 生成成功，再执行 `npx wrangler deploy`。
 
 **Q：第一次部署没有创建 KV？**  
 A：Wrangler 正常会自动创建，并把 namespace id 写回 `wrangler.jsonc`。如果没有，执行：
 
 ```bash
-pnpm exec wrangler kv namespace create PORTFOLIO_KV
+npx wrangler kv namespace create PORTFOLIO_KV
 ```
 
 把返回的 `id` 填进 `wrangler.jsonc` 的 `kv_namespaces` 中，再部署一次。

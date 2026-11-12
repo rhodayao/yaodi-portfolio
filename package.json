@@ -1,24 +1,20 @@
 {
   "name": "yaodi-portfolio",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
-  "description": "姚迪 · UI/UX 设计师作品集 — 可本地部署、可在后台更新的个人网站",
+  "description": "姚迪 · UI/UX 设计师作品集 — 前后端分离，Cloudflare Workers + KV",
   "scripts": {
-    "dev": "node scripts/dev.mjs",
-    "build": "tsc --noEmit && node scripts/build.mjs",
-    "start": "node server/index.js",
-    "check": "tsc --noEmit",
-    "cf:dev": "pnpm build && wrangler dev",
-    "cf:deploy": "pnpm build && wrangler deploy"
+    "dev": "node scripts/build.mjs && wrangler dev",
+    "build": "tsc -p frontend/tsconfig.json --noEmit && node scripts/build.mjs",
+    "check": "tsc -p frontend/tsconfig.json --noEmit",
+    "cf:dev": "node scripts/build.mjs && wrangler dev",
+    "cf:deploy": "tsc -p frontend/tsconfig.json --noEmit && node scripts/build.mjs && wrangler deploy",
+    "package:pages": "node scripts/build.mjs && node scripts/package-pages.mjs"
   },
   "dependencies": {
     "@fontsource-variable/archivo": "^5.2.8",
     "@fontsource-variable/space-grotesk": "^5.2.8",
-    "compression": "^1.8.1",
-    "dotenv": "^16.6.1",
-    "express": "^4.21.2",
-    "multer": "^2.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.30.1"

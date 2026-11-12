@@ -1,11 +1,11 @@
-import seedContent from './seed-content.json'
+import seedContent from '../../shared/content.json'
 
 /**
  * Cloudflare Workers backend for the portfolio.
  *
  * Bindings:
  *   PORTFOLIO_KV  KV namespace for content, backups and uploaded images.
- *   ASSETS        Static assets built into dist/.
+ *   ASSETS        Static assets built into frontend/dist/.
  *
  * Secrets:
  *   ADMIN_PASSWORD

@@ -4,27 +4,16 @@ import { fileURLToPath } from 'node:url'
 import { build } from 'esbuild'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-const dist = path.join(root, 'dist')
+const frontend = path.join(root, 'frontend')
+const dist = path.join(frontend, 'dist')
 const assets = path.join(dist, 'assets')
-
-const seedSource = path.join(root, 'backend', 'data', 'content.json')
-const seedTargets = [
-  path.join(root, 'server', 'seed-content.json'),
-  path.join(root, 'worker', 'seed-content.json'),
-]
-if (fs.existsSync(seedSource)) {
-  for (const seedTarget of seedTargets) {
-    fs.mkdirSync(path.dirname(seedTarget), { recursive: true })
-    fs.copyFileSync(seedSource, seedTarget)
-  }
-}
 
 fs.rmSync(dist, { recursive: true, force: true })
 fs.mkdirSync(assets, { recursive: true })
 
 const result = await build({
   absWorkingDir: root,
-  entryPoints: ['src/main.tsx'],
+  entryPoints: ['frontend/src/main.tsx'],
   bundle: true,
   outdir: assets,
   entryNames: 'app-[hash]',
@@ -53,14 +42,14 @@ const result = await build({
   logLevel: 'info',
 })
 
-fs.cpSync(path.join(root, 'public'), dist, { recursive: true })
+fs.cpSync(path.join(frontend, 'public'), dist, { recursive: true })
 
 const outputs = Object.keys(result.metafile.outputs)
 const jsFile = outputs.find((file) => file.endsWith('.js'))
 const cssFile = outputs.find((file) => file.endsWith('.css'))
 if (!jsFile) throw new Error('Build did not emit a JavaScript bundle')
 
-const htmlSource = fs.readFileSync(path.join(root, 'index.html'), 'utf8')
+const htmlSource = fs.readFileSync(path.join(frontend, 'index.html'), 'utf8')
 const html = htmlSource
   .replace(/\s*<script type="module" src="\/src\/main\.tsx"><\/script>/, '')
   .replace(

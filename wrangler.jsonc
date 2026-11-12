@@ -1,10 +1,10 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "rhodayao-portfolio",
-  "main": "worker/index.js",
+  "main": "backend/src/index.js",
   "compatibility_date": "2026-11-10",
   "assets": {
-    "directory": "./dist",
+    "directory": "./frontend/dist",
     "binding": "ASSETS",
     "not_found_handling": "single-page-application",
     "run_worker_first": ["/api/*", "/uploads/*"]
@@ -13,12 +13,10 @@
     {
       "binding": "PORTFOLIO_KV",
       "id": "bac0df6329214e5f93ca7e10ba7456d4"
-
     }
   ],
   "workers_dev": true,
   "preview_urls": true,
-
   "observability": {
     "enabled": true
   },
